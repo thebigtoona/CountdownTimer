@@ -1,6 +1,9 @@
-// const eventDate = new Date('May 7, 2018 14:00:00').getTime();  // date in the future to count to 
-// const MovingDate = new Date('March 27, 2018 18:00:00').getTime();  // date in the future to count to 
-
+/**
+ * eventTimer class 
+ * @description : this class takes in a date string and calculates, the distance between 
+ * the current time and the date string provided 
+ * @param {string} eventDate : user input from the dom as string or a string Date value  
+ */
 const eventTimer = class {
     constructor( eventDate ) { 
         this.eventDate = new Date(eventDate).getTime();
@@ -14,7 +17,7 @@ const eventTimer = class {
     }
     
 };
- 
+
 const month = 'May'
 const day = '7'
 const hr = '15'
