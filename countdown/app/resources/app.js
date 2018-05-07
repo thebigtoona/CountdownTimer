@@ -1,4 +1,4 @@
-const MovingDate = new Date('May 31, 2018 08:00:00').getTime();  // date in the future to count to 
+const MovingDate = new Date('May 7, 2018 14:00:00').getTime();  // date in the future to count to 
 // const MovingDate = new Date('March 27, 2018 18:00:00').getTime();  // date in the future to count to 
 
 let x = setInterval( function(){
@@ -29,7 +29,7 @@ let x = setInterval( function(){
     if ($('#day').html() === '00') $('#d').addClass('text-muted') && $('#day').addClass('text-muted');
     if ($('#hour').html() === '00') $('#h').addClass('text-muted') && $('#hour').addClass('text-muted');
     if ($('#min').html() === '00')  $('#m').addClass('text-muted') && $('#min').addClass('text-muted');
-    if ($('#sec').html() === '00')  $('#s').addClass('text-muted') && $('#sec').addClass('text-muted');
+    if ($('#sec').html() === '00' & $('#min').html() === '00')  $('#s').addClass('text-muted') && $('#sec').addClass('text-muted');
     
     // if ($('#sec').html() !== '00' && $('#sec').hasClass('text-muted')) $('#sec').removeClass('text-muted')
     if ($('#hour').html() !== '00' && $('#hour').hasClass('text-muted')) $('#hour').removeClass('text-muted') && $('#h').removeClass('text-muted');
