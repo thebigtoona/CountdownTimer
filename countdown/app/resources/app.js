@@ -17,12 +17,7 @@ const EventTimer = class {
     } 
 };
 
-// test timer 
-// const pomorado = new EventTimer(`${day} ${month} ${year} ${hr}:${min}:${sec}`);
-
-const startBtn = document.querySelector('#startTimer')
-
-const startTimer = function(e) {
+function startTimer(e)  {
     // prevent default state 
     e.preventDefault();
     
@@ -42,11 +37,15 @@ const startTimer = function(e) {
         min : timeInput[1],
         sec : '00',
     }
-
+    
     // set up timer obj
     const timer = new EventTimer(`${timerValues.day} ${timerValues.month} ${timerValues.year} ${timerValues.hr}:${timerValues.min}:${timerValues.sec}`)
     // start timer 
     setInterval(timer.checkTime, 1000)
 } 
 
+// variables  
+const startBtn = document.querySelector('#startTimer')
+
+// events 
 startBtn.addEventListener('click', startTimer)
