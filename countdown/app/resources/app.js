@@ -38,7 +38,11 @@ function readyTimer(timerValues)
     const x = setInterval(() => {
         const timer = new EventTimer(`${timerValues.day} ${timerValues.month} ${timerValues.year} ${timerValues.hr}:${timerValues.min}:${timerValues.sec}`)
         timer.checkTime();  
-        if (timer.distance < 1000) clearInterval(x)  
+        if (timer.distance < 1000) 
+        {
+            clearInterval(x)
+            timer = null;
+        }
       }, 1000)
 }
 
