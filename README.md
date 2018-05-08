@@ -8,3 +8,4 @@ This is a timer to countdown an event, which is hard-coded into the javascript a
 ## Photo Credits 
 * Cedric Frixon
 * Sasha Instagram
+* Clock Photo by freestocks.org on Unsplash
