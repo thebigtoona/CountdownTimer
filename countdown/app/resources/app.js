@@ -1,8 +1,8 @@
 /**
- * eventTimer class 
- * @description : this class takes in a date string and calculates, the distance between 
+ * Class to create a timer obj 
+ * @description - this class takes in a date string and calculates, the distance between 
  * the current time and the date string provided 
- * @param {string} eventDate : user input from the dom as string or a string Date value  
+ * @param {string} eventDate - user input from the dom as string or a string Date value  
  */
 const EventTimer = class {
     constructor( eventDate ) { 
@@ -13,10 +13,30 @@ const EventTimer = class {
         this._hour = () => Math.floor((this.getDistance() % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
         this._min = () => Math.floor((this.getDistance() % (1000 * 60 * 60)) / (1000 * 60));
         this._sec = () => Math.floor((this.getDistance() % (1000 * 60)) / 1000);
-        this.checkTime = () => console.log(this._day(), ":", this._hour(), ":", this._min(), ":", this._sec())
+        this.checkTime = () => {
+            console.log(this._day(), ":", this._hour(), ":", this._min(), ":", this._sec())
+            if (this.getDistance === '0') return false 
+        }
     } 
 };
 
+/*** Fn to instanciate and start the timer obj
+ * @param {Obj} timerValues - this is the obj with the tiemr data provided by startTimer
+ */
+function readyTimer(timerValues)
+{
+    // set up timer obj
+    const timer = new EventTimer(`${timerValues.day} ${timerValues.month} ${timerValues.year} ${timerValues.hr}:${timerValues.min}:${timerValues.sec}`)
+    // start timer 
+    const x = setInterval(timer.checkTime, 1000)
+    // TODO: fix the interval to clear at the appropriate time 
+    if (timer.checkTime === false) clearInterval(x);  
+}
+
+/*** Function to start timer 
+ * @description - this fn takes in the event, prevents the default state, manipulates the 
+ * user data into an obj for readyTimer to use.  
+ */
 function startTimer(e)  {
     // prevent default state 
     e.preventDefault();
@@ -37,11 +57,9 @@ function startTimer(e)  {
         min : timeInput[1],
         sec : '00',
     }
-    
-    // set up timer obj
-    const timer = new EventTimer(`${timerValues.day} ${timerValues.month} ${timerValues.year} ${timerValues.hr}:${timerValues.min}:${timerValues.sec}`)
-    // start timer 
-    setInterval(timer.checkTime, 1000)
+
+    // ready and start the timer 
+    readyTimer(timerValues);
 } 
 
 // variables  
