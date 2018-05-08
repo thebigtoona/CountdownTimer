@@ -14,17 +14,29 @@ const eventTimer = class {
         this._min = () => Math.floor((this.getDistance() % (1000 * 60 * 60)) / (1000 * 60));
         this._sec = () => Math.floor((this.getDistance() % (1000 * 60)) / 1000);
         this.checkTime = () => console.log(this._day(), ":", this._hour(), ":", this._min(), ":", this._sec())
-    }
-    
+    } 
 };
 
+// TODO: new object to handle parsing the date from the user and feeding it to the eventTimer class
+const parseDate = {
+    parseDay: () => console.log('parse the day'),
+    parseMonth: () => console.log('parse the month'),
+    parseYear: () => console.log('parse the year'),
+    parseMin: () => console.log(),
+    parseSec: () => console.log(),
+    parseReturnVal: '',
+}
+
+// variable set up for the timer 
 const month = 'May'
-const day = '7'
+const year = '2018'
+const day = '8'
 const hr = '15'
 const min = '30'
 const sec = '00'
 
-const pomorado = new eventTimer(`${month} ${day}, 2018 ${hr}:${min}:${sec}`);
+// test timer 
+const pomorado = new eventTimer(`${day} ${month} ${year} ${hr}:${min}:${sec}`);
 console.log(pomorado);
 
 setInterval(pomorado.checkTime, 1000);
