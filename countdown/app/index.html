@@ -11,12 +11,20 @@
   <title>eventTimer</title>
 </head>
 <body>
-
+  
 <!-- header -->
 <header class="header">
   <nav class="navbar">
     <div class="navbar_inner">
       <!-- navbar stuff here -->
+      <div class="navbar_brand">eventTimer</div>
+      <div class="navbar_body">
+        <div class="navbar_nav">
+          <div class="nav_item"><a href="" aria-label="Start">Start</a></div>
+          <div class="nav_item"><a href="" aria-label="Stop">Stop</a></div>
+          <div class="nav_item"><a href="" aria-label="Reset">Reset</a></div>
+        </div>
+      </div>
     </div>
   </nav>
 </header>
@@ -24,10 +32,31 @@
 <!-- main -->
 <div class="site_wrapper">
   <main class="timer">
-    <section class="timer_display">
-      <!-- timer display -->
+
+    <section class="timer_controls">
+      <div class="section_inner">
+        <p class="date_p">
+          1. What day is your event?
+        </p>
+        <input type="date" id="dateInput" aria-label="date selection">
+
+        <p class="time_p">
+          2. What time does it start?
+        </p>
+        <input type="time" id="timeInput" aria-label="time selection">
+        <label for="amRadio" aria-label="AM">AM</label>
+        <input type="radio" id="amRadio">
+        <label for="pmRadio" aria-label="PM">PM</label>
+        <input type="radio" id="pmRadio">
+      </div>
     </section>
-    <section class="timer_controls"></section>
+
+    <section class="timer_display">
+        <div class="section_inner">
+          <!-- timer display -->
+          
+        </div>
+    </section>
   </main>
 </div>
 
