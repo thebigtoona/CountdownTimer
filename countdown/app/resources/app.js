@@ -36,14 +36,19 @@ const EventTimer = class {
 function readyTimer(timerValues)
 {
     const x = setInterval(() => {
+        // instanciate an EventTimer and inject the values from the user input
         const timer = new EventTimer(`${timerValues.day} ${timerValues.month} ${timerValues.year} ${timerValues.hr}:${timerValues.min}:${timerValues.sec}`)
-        timer.checkTime();  
+        timer.checkTime();  // run the check time method to spit out a timestamp
+
+        // check if there is less than a second left on the timer. 
+        // If so, clear the interval and null out the obj
         if (timer.distance < 1000) 
         {
             clearInterval(x)
-            timer = null;
+            timer = null
+            return
         }
-      }, 1000)
+      }, 1000) // runs every sec (1000ms)
 }
 
 /*** Function to start timer 
