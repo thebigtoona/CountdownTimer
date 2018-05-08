@@ -2,35 +2,44 @@
  * Class to create a timer obj 
  * @description - this class takes in a date string and calculates, the distance between 
  * the current time and the date string provided 
- * @param {string} eventDate - user input from the dom as string or a string Date value  
+ * @param {string} eventDate - user input from the dom as string or a string Date value 
+ * @param {Number} now - the current time in ms 
+ * @param {Number} distance - calculated from the current time subtracted from the input time 
+ * @param {Number} day - calculated from the distance to represent the days left 
+ * @param {Number} hour - calculated from the distance  to represent the hours left
+ * @param {Number} min  - calculated from the distance to represent the minutes left
+ * @param {Number} sec  - calculated from the distance to represent the seconds left
  */
 const EventTimer = class {
     constructor( eventDate ) { 
         this.eventDate = new Date(eventDate).getTime();
-        this.now = () => new Date().getTime();
-        this.getDistance = () => this.eventDate - this.now();
-        this._day = () => Math.floor(this.getDistance() / (1000 * 60 * 60 * 24));
-        this._hour = () => Math.floor((this.getDistance() % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-        this._min = () => Math.floor((this.getDistance() % (1000 * 60 * 60)) / (1000 * 60));
-        this._sec = () => Math.floor((this.getDistance() % (1000 * 60)) / 1000);
-        this.checkTime = () => {
-            console.log(this._day(), ":", this._hour(), ":", this._min(), ":", this._sec())
-            if (this.getDistance === '0') return false 
-        }
+        this.now = new Date().getTime();
+        this.distance = this.eventDate - this.now;
+        this.day = Math.floor(this.distance / (1000 * 60 * 60 * 24));
+        this.hour = Math.floor((this.distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        this.min = Math.floor((this.distance % (1000 * 60 * 60)) / (1000 * 60));
+        this.sec = Math.floor((this.distance % (1000 * 60)) / 1000);
     } 
-};
+    checkTime() {
+      console.log(this.day, ":", this.hour, ":", this.min, ":", this.sec)
+    }
+    getDistance(){ this.eventDate - this.now; }
+    toString() {
+      return `eventDate ${this.eventDate} :: now  ${this.now} :: distance ${this.distance} :: day ${this.day} :: hour ${this.hour} :: min ${this.min} :: sec ${this.sec}`
+    }
+  };
+
 
 /*** Fn to instanciate and start the timer obj
  * @param {Obj} timerValues - this is the obj with the tiemr data provided by startTimer
  */
 function readyTimer(timerValues)
 {
-    // set up timer obj
-    const timer = new EventTimer(`${timerValues.day} ${timerValues.month} ${timerValues.year} ${timerValues.hr}:${timerValues.min}:${timerValues.sec}`)
-    // start timer 
-    const x = setInterval(timer.checkTime, 1000)
-    // TODO: fix the interval to clear at the appropriate time 
-    if (timer.checkTime === false) clearInterval(x);  
+    const x = setInterval(() => {
+        const timer = new EventTimer(`${timerValues.day} ${timerValues.month} ${timerValues.year} ${timerValues.hr}:${timerValues.min}:${timerValues.sec}`)
+        timer.checkTime();  
+        if (timer.distance < 1000) clearInterval(x)  
+      }, 1000)
 }
 
 /*** Function to start timer 
