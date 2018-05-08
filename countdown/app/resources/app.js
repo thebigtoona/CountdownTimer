@@ -23,14 +23,18 @@ const EventTimer = class {
 const startBtn = document.querySelector('#startTimer')
 
 const startTimer = function(e) {
+    // prevent default state 
     e.preventDefault();
+    
+    // user inputs split into arrays to manipulate the data
     const dateInput = document.querySelector('#dateInput').value.split('-')
     const timeInput = document.querySelector('#timeInput').value.split(':')
     
     // key/value pairs for months to parse properly as dateString in EventTimer
     const months = { "01": 'Jan', "02": 'Feb', "03": 'Mar', "04": 'Apr', "05": 'May', "06": 'Jun', "07": 'Jul', "08": 'Aug', "09": 'Sep', "10": 'Oct', "11": 'Nov', "12": 'Dec' }
-    // const monthSelected =
-    timerValues =  {
+    
+    // constructing the input data as an obj to inject into the dateString 
+    const timerValues =  {
         month :  months[ dateInput[1] ],
         year : dateInput[0],
         day : dateInput[2],
@@ -38,8 +42,10 @@ const startTimer = function(e) {
         min : timeInput[1],
         sec : '00',
     }
-    console.log(timerValues)
-    timer = new EventTimer(`${timerValues.day} ${timerValues.month} ${timerValues.year} ${timerValues.hr}:${timerValues.min}:${timerValues.sec}`)
+
+    // set up timer obj
+    const timer = new EventTimer(`${timerValues.day} ${timerValues.month} ${timerValues.year} ${timerValues.hr}:${timerValues.min}:${timerValues.sec}`)
+    // start timer 
     setInterval(timer.checkTime, 1000)
 } 
 
