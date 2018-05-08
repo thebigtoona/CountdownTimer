@@ -37,7 +37,7 @@ function readyTimer(timerValues)
 {
     const x = setInterval(() => {
         // instanciate an EventTimer and inject the values from the user input
-        const timer = new EventTimer(`${timerValues.day} ${timerValues.month} ${timerValues.year} ${timerValues.hr}:${timerValues.min}:${timerValues.sec}`)
+        let timer = new EventTimer(`${timerValues.day} ${timerValues.month} ${timerValues.year} ${timerValues.hr}:${timerValues.min}:${timerValues.sec}`)
         timer.checkTime();  // run the check time method to spit out a timestamp
 
         // check if there is less than a second left on the timer. 
