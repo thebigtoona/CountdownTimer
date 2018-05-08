@@ -4,7 +4,7 @@
  * the current time and the date string provided 
  * @param {string} eventDate : user input from the dom as string or a string Date value  
  */
-const eventTimer = class {
+const EventTimer = class {
     constructor( eventDate ) { 
         this.eventDate = new Date(eventDate).getTime();
         this.now = () => new Date().getTime();
@@ -17,26 +17,30 @@ const eventTimer = class {
     } 
 };
 
-// TODO: new object to handle parsing the date from the user and feeding it to the eventTimer class
-const parseDate = {
-    parseDay: () => console.log('parse the day'),
-    parseMonth: () => console.log('parse the month'),
-    parseYear: () => console.log('parse the year'),
-    parseMin: () => console.log(),
-    parseSec: () => console.log(),
-    parseReturnVal: '',
-}
-
-// variable set up for the timer 
-const month = 'May'
-const year = '2018'
-const day = '8'
-const hr = '15'
-const min = '30'
-const sec = '00'
-
 // test timer 
-const pomorado = new eventTimer(`${day} ${month} ${year} ${hr}:${min}:${sec}`);
-console.log(pomorado);
+// const pomorado = new EventTimer(`${day} ${month} ${year} ${hr}:${min}:${sec}`);
 
-setInterval(pomorado.checkTime, 1000);
+const startBtn = document.querySelector('#startTimer')
+
+const startTimer = function(e) {
+    e.preventDefault();
+    const dateInput = document.querySelector('#dateInput').value.split('-')
+    const timeInput = document.querySelector('#timeInput').value.split(':')
+    
+    // key/value pairs for months to parse properly as dateString in EventTimer
+    const months = { "01": 'Jan', "02": 'Feb', "03": 'Mar', "04": 'Apr', "05": 'May', "06": 'Jun', "07": 'Jul', "08": 'Aug', "09": 'Sep', "10": 'Oct', "11": 'Nov', "12": 'Dec' }
+    // const monthSelected =
+    timerValues =  {
+        month :  months[ dateInput[1] ],
+        year : dateInput[0],
+        day : dateInput[2],
+        hr : timeInput[0],
+        min : timeInput[1],
+        sec : '00',
+    }
+    console.log(timerValues)
+    timer = new EventTimer(`${timerValues.day} ${timerValues.month} ${timerValues.year} ${timerValues.hr}:${timerValues.min}:${timerValues.sec}`)
+    setInterval(timer.checkTime, 1000)
+} 
+
+startBtn.addEventListener('click', startTimer)
