@@ -1,14 +1,14 @@
 /* root variables */
-:root 
+:root
 {
   --raleway: 'Raleway', sans-serif;
   --clock-photo: url('');
 }
 
-* 
+*
 {
   margin: 0;
-  padding: 0; 
+  padding: 0;
   border: 0;
   text-decoration: none;
   list-style: none;
@@ -24,8 +24,6 @@ body, html
   font-weight: 400;
   line-height: 1.5;
 
-  background-image: var(--clock-photo);
-  background-attachment: fixed;
   background-origin: border-box;
   background-position: center;
   background-repeat: no-repeat;
@@ -40,6 +38,7 @@ h1, h2, h3
 input
 {
   padding: 1em;
+  margin: 0 auto;
 }
 
 header, nav, section
@@ -48,7 +47,7 @@ header, nav, section
 }
 
 /* NAVBAR STYLES */
-.navbar 
+.navbar
 {
   width: inherit;
 }
@@ -65,7 +64,6 @@ header, nav, section
 .navbar_brand
 {
   padding: 1em;
-  padding-left: 0;
 }
 
 .navbar_body
@@ -86,9 +84,35 @@ header, nav, section
 }
 
 /* Main */
+.timer_controls, .timer_display
+{
+  margin-top: 70px;
+  font-size: 1.5rem;
+  text-align: center;
+}
+
 .section_inner
 {
   max-width: 800px;
   margin-left: auto;
   margin-right: auto;
+}
+
+.timer_display {
+  padding: 1rem;
+  margin: 30px auto;
+  max-width: 280px;
+}
+
+
+/* inputs */
+#dateInput {
+  margin-left: 2rem;
+}
+
+@media screen and (max-width: 350px)
+{
+  .navbar_nav, .navbar_brand {
+    margin: 0 auto;
+  }
 }
