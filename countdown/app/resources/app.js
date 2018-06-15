@@ -2,7 +2,7 @@
  * Class to create a timer obj
  * @description - this class takes in a date string and calculates, the distance between
  * the current time and the date string provided
- * @param {string} eventDate - user input from the dom as string or a string Date value
+ * @param {String} eventDate - user input from the dom as string or a string Date value
  * @param {Number} now - the current time in ms
  * @param {Number} distance - calculated from the current time subtracted from the input time
  * @param {Number} day - calculated from the distance to represent the days left
@@ -22,9 +22,9 @@ const EventTimer = class {
     }
     checkTime() {
 			const currentTime = `	<p>Days: ${this.day}</p>
-														<p>Hours:  ${this.hour}</p>
-														<p>Minutes:  ${this.min}</p>
-														<p>Seconds: ${this.sec}</p>`
+									<p>Hours:  ${this.hour}</p>
+									<p>Minutes:  ${this.min}</p>
+									<p>Seconds: ${this.sec}</p>`
 			return currentTime;
     }
     getDistance(){ this.eventDate - this.now; }
