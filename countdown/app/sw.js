@@ -1,5 +1,5 @@
 // service worker
-const cachedAssets = 'assets-v1';
+const cachedAssets = 'assets-v3';
 
 self.addEventListener('install', () => {
   const urls = [
