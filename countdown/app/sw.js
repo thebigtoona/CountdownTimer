@@ -1,7 +1,8 @@
 // service worker
-const cachedAssets = 'assets-v3';
+const cachedAssets = 'assets-v1';
 
-self.addEventListener('install', () => {
+// add assets to cache
+self.addEventListener('install', (e) => {
   const urls = [
     '/resources/styles.css',
     '/resources/app.js',
